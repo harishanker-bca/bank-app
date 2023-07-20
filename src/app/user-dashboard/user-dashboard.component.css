@@ -1,0 +1,12 @@
+img{
+    height: 80%;
+}
+.offcanvas{
+   
+    height: 500px;
+    width: 700px;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 100px;
+    margin-left: 25vw;
+}

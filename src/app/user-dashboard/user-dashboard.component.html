@@ -1,0 +1,172 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary border fw-bold">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/user/dashboard">HDfC BANK</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div style="width: 100px;" class="me-5 d-flex justify-content-end collapse navbar-collapse"
+            id="navbarSupportedContent">
+            <div class=" ">
+                <ul class="  navbar-nav me-auto mb-2 mb-lg-0">
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            settings
+                        </a>
+                        <ul class="dropdown-menu p-3">
+                            <li><button type="button" class="btn dropdown-item btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Delete Acc
+                                </button></li>
+                            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<h2 class="p-2">welcome back <span>{{user}}</span></h2>
+
+<h2 class="text-center mt-5">OUR SERVICES</h2>
+<div class="container mt-5">
+    <div class="row text-center">
+        <div class="col-4">
+            <!--check balance  -->
+            <div class="card" style="width: 20rem;height: 22rem;">
+                <img src="http://hoefler.in/images/hoeflerqry.png" class="card-img-top" alt="...">
+                <div class="card-body">
+
+                    <button (click)="getBalance()" class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        click here
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="col-4">
+                <!-- fund transfer -->
+                <div class="card" style="width: 18rem;height: 22rem;">
+                    <img src="https://www.about-payments.com/logo/300/225/2855" alt="...">
+                    <div class="card-body">
+
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            click here
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="col-4">
+                <div class="card" style="width: 18rem;height: 22rem;">
+                    <img src="https://thumbs.dreamstime.com/z/statement-icon-vector-thin-line-outline-illustration-symbol-use-web-mobile-apps-logo-print-media-141551574.jpg"
+                        alt="...">
+                    <div class="card-body">
+
+                        <a routerLink="/user/transactions" class="btn btn-primary">Click here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- balance off canvas -->
+
+<div *ngIf=" balanceSuccessStatus" class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold" id="offcanvasExampleLabel">Balance</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="text-center">
+            <div>
+                <img width="50%"
+                    src="https://img.freepik.com/premium-vector/bank-building-money-bank-financing-money-exchange-financial-services-atm-giving-out-money_625536-194.jpg?w=2000"
+                    alt="money imge">
+            </div>
+            <h2>hy <span>{{user}}</span> your balance is <span class="fw-bold">&#8377; {{balance}}/-</span> </h2>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form [formGroup]="transferForm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 fw-bold" id="staticBackdropLabel">Transfer Money</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img width="100%"
+                        src="https://www.paisabazaar.com/wp-content/uploads/2019/01/Transfer-Funds-HDFC.jpg" alt="">
+
+                    <div class="p-2">
+                        <div class="form-floating mb-3">
+                            <input name="creditAcno" formControlName="creditAcno" type="text" class="form-control"
+                                id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput" class="fw-bold">Creidt Acc Number</label>
+                        </div>
+                        <!-- error  -->
+                        <div *ngIf="transferForm.get('creditAcno')?.touched && transferForm.get('creditAcno')?.errors"
+                            class="my-1">
+                            <p class="text-danger fw-bold">*Invalid account number</p>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input name="creditAmount" formControlName="creditAmount" type="number" class="form-control"
+                                id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput" class="fw-bold">Amount</label>
+                        </div>
+                        <!-- error  -->
+                        <div *ngIf="transferForm.get('creditAmount')?.touched && transferForm.get('creditAmount')?.errors"
+                            class="my-1">
+                            <p class="text-danger fw-bold">*Invalid account number</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    <!-- [disabled]="transferForm.invalid" -->
+                    <button (click)="fundTransfer()" type="button" class="btn btn-success">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Delete modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Do you want to delete your account?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Confirming will delete your account permenently
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteAcount()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

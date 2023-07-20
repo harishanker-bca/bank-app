@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("node_modules/ngx-toastr/toastr.css");
+* {
+    font-family: 'Inspiration', cursive;
+    font-family: 'Kablammo', cursive;
+    font-family: 'Titillium Web', sans-serif;
+}
+/* body{
+    background-color: rgb(55, 53, 53);
+} */

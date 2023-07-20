@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+
+<section class="login container-fluid mt-4 p-2 fw-bold">
+    <div class="row ">
+        <h2 class="mb-3">Login To Know More..</h2>
+        <div class="col-6">
+            <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis officia nulla numquam
+                aliquid corporis ratione enim animi consectetur sunt debitis? Mollitia, voluptatem! Consequuntur magnam
+                cum similique quia corrupti nihil in accusantium, vitae asperiores rem sunt earum voluptatibus soluta
+                cumque explicabo, doloribus sint? Laudantium repellendus sed accusamus, asperiores omnis dignissimos
+                iste explicabo harum alias quam et maxime. Quas natus magnam voluptatum ratione eligendi quod eius quos
+                voluptate, mollitia voluptatem inventore obcaecati, rem harum debitis, optio magni eum cum in qui
+                impedit minima porro suscipit. Doloremque quis ab iste vel consequatur corrupti atque amet, maxime
+                maiores nemo aspernatur. Magni consectetur quos consequuntur. Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Soluta commodi nihil porro vel. Sint consectetur ex eveniet velit praesentium cumque
+                iure aspernatur nemo consequatur in officiis harum, similique, saepe incidunt!</p>
+        </div>
+        <div class="col-6 login-form">
+
+            <div class="mb-3">
+                <h3 class="text-center">Login</h3>
+            </div>
+            <form [formGroup]="loginForm">
+                <div class="form-floating  mb-2">
+                    <input name="acno" formControlName="acno" type="text" class="form-control" id="floatingAcNo"
+                        placeholder="100xxx12xxx222">
+                    <label for="floatingAcNo">Account Number</label>
+                </div>
+                <!-- error  -->
+                <div *ngIf="loginForm.get('acno')?.touched && loginForm.get('acno')?.errors" class="my-1">
+                    <p class="text-danger">*Invalid account number</p>
+                </div>
+
+                <div class="form-floating">
+                    <input name="pswd" formControlName="pswd" type="password" class="form-control" id="floatingPassword"
+                        placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+
+                <!-- error  -->
+                <div *ngIf="loginForm.get('pswd')?.touched && loginForm.get('pswd')?.errors" class="my-1">
+                    <p class="text-danger">*Invalid password</p>
+                </div>
+                <div class="d-flex justify-content-center  mt-2 ">
+                    <button (click)="login()" type="button" class="btn btn-outline-info fw-bolder">Login
+                        <div *ngIf="isLoggedIn" class="spinner-border text-light" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                    </button>
+
+                </div>
+
+                <p class="m-2 text-center fw-bold">are you new here? <a routerLink="/user/register"
+                        class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Register.</a>
+                </p>
+
+            </form>
+
+        </div>
+    </div>
+
+</section>
+
+
+
+
+<app-footer></app-footer>

@@ -1,0 +1,15 @@
+*{
+    /* outline: 1px solid red; */
+    margin: 0;
+}
+p{
+    text-align: justify;
+}
+.login-form{
+   
+    padding: 3px 50px 20px 50px;
+    border: 1px solid rgb(22, 169, 180);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+}

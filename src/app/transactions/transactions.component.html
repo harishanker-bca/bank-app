@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary border fw-bold">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/user/dashboard">HDfC BANK</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div style="width: 100px;" class="me-5 d-flex justify-content-end collapse navbar-collapse"
+            id="navbarSupportedContent">
+            <div class=" ">
+                <ul class="  navbar-nav me-auto mb-2 mb-lg-0">
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Delete Account</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="search">
+        <div class="row align+-middle">
+            <div class="col-3">
+                <h3 class="text-primary">All Transactions</h3>
+            </div>
+            <div class="col-2">
+                <span>seach by</span>
+            </div>
+            <div class="col-4">
+                <input type="text" [(ngModel)]="serchKey" name="serchKey" class="form-control" id="serchKey"
+                    placeholder="">
+            </div>
+            <div class="col-2"></div>
+            <div class="col-1">
+                <button (click)="generatePDF()" type="button" class="btn btn-success">Export</button>
+            </div>
+        </div>
+    </div>
+    <div class="table fw-bold">
+        <table class="table" id="transactionTable">
+            <thead>
+                <tr class="fw-bolder">
+                    <th scope="col">No</th>
+                    <th scope="col">Transaction Type</th>
+                    <th scope="col">From Account</th>
+                    <th scope="col">To Account</th>
+                    <th scope="col">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- *ngFor="let transaction of  allTransactions;let i = index" -->
+                <tr *ngFor="let transaction; index as i of  allTransactions | search:serchKey:'transaction_type'">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{transaction.transaction_type}}</td>
+                    <td>{{transaction.fromAcno}}</td>
+                    <td>{{transaction.toAcno}}</td>
+                    <td>{{transaction.amount}}</td>
+
+                </tr>
+                <tr *ngIf="(allTransactions | search:serchKey:'transaction_type').length==0 && serchKey!=''">
+                   <th></th>
+                   <th></th>
+                   <th class="pt-4"> <h3 class="text-center text-danger fw-bolder">serach key not found!</h3></th>
+                   <th></th>
+                   <th></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button type="button" class="btn btn-primary" routerLink="/user/dashboard">back</button>
+</div>
+

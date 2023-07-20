@@ -1,0 +1,9 @@
+section{
+    /* background-image: url("/assets/banner.jpg"); */
+    background-image: url("/assets/banner2.jpg");
+    background-size:cover;
+    background-color: rgba(15, 52, 155, 0.904);
+    background-repeat: no-repeat    ;
+    height: 200px;
+    border-bottom: 1px solid rgb(141, 134, 134);
+}

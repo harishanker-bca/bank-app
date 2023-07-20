@@ -1,0 +1,22 @@
+*{
+    /* outline: 1px solid red; */
+    box-sizing: border-box !important;
+    
+    margin: 0px;
+}
+
+img{
+
+    border: 1px solid black;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  
+    
+    height: 350px;
+}
+.carousel-item img{
+    /* border: 1px solid black; */
+    width: 100% !important;
+    height: 40vh !important;
+    
+}
